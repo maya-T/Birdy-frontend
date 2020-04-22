@@ -1,0 +1,111 @@
+/*//////////////////////////////////////////////////////////////////
+[ FONT ]*/
+@font-face {
+  font-family: Poppins-Regular;
+  src: url("../fonts/poppins/Poppins-Regular.ttf");
+}
+
+@font-face {
+  font-family: Poppins-Medium;
+  src: url("../fonts/poppins/Poppins-Medium.ttf");
+}
+
+@font-face {
+  font-family: Poppins-Bold;
+  src: url("../fonts/poppins/Poppins-Bold.ttf");
+}
+
+@font-face {
+  font-family: Poppins-SemiBold;
+  src: url("../fonts/poppins/Poppins-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-Bold;
+  src: url("../fonts/montserrat/Montserrat-Bold.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-SemiBold;
+  src: url("../fonts/montserrat/Montserrat-SemiBold.ttf");
+}
+
+@font-face {
+  font-family: Montserrat-Regular;
+  src: url("../fonts/montserrat/Montserrat-Regular.ttf");
+}
+
+/*//////////////////////////////////////////////////////////////////
+[ RESTYLE TAG ]*/
+html {
+  min-height: 100%;
+  height: 100%;
+}
+body {
+  font-family: Poppins-Regular, sans-serif;
+}
+
+.txt1 {
+  font-family: Montserrat-Regular;
+  font-size: 13px;
+  line-height: 1.4;
+  color: #555555;
+}
+.txt2 {
+  font-size: 0.85rem;
+}
+.form-control-lg {
+  height: 3.5rem;
+}
+.form-control-md {
+  height: 3rem;
+}
+
+/*==================================================================
+[ login more ]*/
+.picker {
+  border: none;
+}
+.img-more {
+  margin-top: 30%;
+  max-height: 50%;
+}
+
+/*==================================================================
+[ Form ]*/
+
+.container-form {
+  height: auto;
+  background-color: #f7f7f7;
+}
+
+.padding-login {
+  padding-top: 60px;
+}
+.padding-signup {
+  padding-top: 40px;
+}
+.login-form-title {
+  width: 100%;
+  display: block;
+  font-family: Poppins-Regular;
+  font-size: 30px;
+  color: #333333;
+  line-height: 1.2;
+  text-align: center;
+}
+/*------------------------------------------------------------------
+[ Responsive ]*/
+
+@media (max-width: 768px) {
+  .img-more-container {
+    display: none;
+  }
+}
+@media (max-width: 576px) {
+  .img-more-container {
+    display: none;
+  }
+}
+
+/*==================================================================*/

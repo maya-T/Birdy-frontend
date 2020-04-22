@@ -1,0 +1,43 @@
+@font-face {
+  font-family: Poppins-Regular;
+  src: url("../fonts/poppins/Poppins-Regular.ttf");
+}
+.nav {
+  font-family: Poppins-Regular, sans-serif;
+}
+.nav-link {
+  font-weight: 450;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.nav-link:hover {
+  color: #007bff;
+}
+.dropdown {
+  color: #fff;
+  border: none;
+  font-weight: 450;
+  font-size: 1.2rem;
+  box-shadow: 0;
+}
+.dropdown:hover {
+  color: #007bff;
+  border: none;
+  background-color: transparent;
+  box-shadow: 0;
+}
+.show > .btn-outline-primary.dropdown-toggle {
+  color: #007bff;
+  background-color: transparent;
+  border: none;
+  box-shadow: 0;
+}
+a.navbar-brand {
+  font-weight: 450;
+  color: #fff;
+  font-size: 1.2rem;
+}
+.brand {
+  padding-top: 5px;
+  font-size: 1.6rem;
+}

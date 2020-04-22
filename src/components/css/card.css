@@ -1,0 +1,110 @@
+.card-link {
+  font-size: 1.2rem;
+}
+.no-border-radius {
+  border-radius: 0;
+}
+.new-comment-card {
+  border-radius: 0;
+}
+.comment-title {
+  font-size: 15px;
+}
+.comment-subtitle,
+.comment-text {
+  font-size: 13px;
+}
+.empty-heart {
+  color: rgb(101, 119, 134);
+}
+.empty-heart:hover {
+  color: red;
+}
+.full-heart {
+  color: red;
+}
+.full-heart:hover {
+  color: rgb(101, 119, 134);
+}
+.comment-container {
+  background-color: #f8f8f8;
+  border-radius: 7px 7px 7px 7px;
+}
+hr {
+  border: 1px solid #f8f8f8;
+  margin: 0;
+}
+.post-field {
+  border: none;
+  word-break: break-word;
+}
+
+.post-field:focus {
+  outline: none;
+}
+.comment-field {
+  background-color: #f8f8f8;
+  border: 1px solid rgba(0, 0, 0, 0.125);
+  border-radius: 30px;
+  word-break: break-word;
+  height: 3rem;
+}
+.comment-field:focus {
+  outline: none;
+}
+.card-post {
+  height: 5rem;
+}
+hr.dark {
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+.comment-button {
+  width: 45px;
+  height: 45px;
+  padding: auto;
+}
+.comment-icon {
+  font-size: 1rem;
+}
+.feed {
+  background-color: #f0f0f0;
+  min-height: 100vh;
+}
+@media (max-width: 576px) {
+  .comment-button {
+    width: 35px;
+    height: 35px;
+    padding: auto;
+  }
+  .comment-icon {
+    font-size: 0.6rem;
+  }
+}
+.input-file {
+  margin: 0;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input-file + label {
+  font-size: 1.25rem;
+  /* font-weight: 700;  */
+  margin: 0;
+  color: white;
+  background-color: transparent;
+  display: inline-block;
+}
+
+.input-file:focus + label,
+.input-file + label:hover {
+  background-color: transparent;
+}
+.input-file + label {
+  cursor: pointer; /* "hand" cursor */
+}
+.input-file:focus + label {
+  outline: none;
+}

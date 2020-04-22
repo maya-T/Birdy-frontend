@@ -1,0 +1,88 @@
+.twPc-div {
+  background: #fff none repeat scroll 0 0;
+  border: 1px solid #e1e8ed;
+  border-radius: 6px;
+  margin: 0;
+  /* max-width: 340px;  orginal twitter width: 290px; */
+}
+.twPc-bg {
+  /* background-image: url("https://pbs.twimg.com/profile_banners/50988711/1384539792/600x200"); */
+  background-color: #444655;
+  background-position: 0 50%;
+  background-size: 100% auto;
+  border-bottom: 1px solid #e1e8ed;
+  border-radius: 4px 4px 0 0;
+  height: 15rem;
+  width: 100%;
+}
+.twPc-block {
+  display: block !important;
+}
+.twPc-avatarLink {
+  background-color: #fff;
+  border-radius: 5rem;
+  display: inline-block !important;
+  float: left;
+  margin: -50px 5px 0px 8px;
+  max-width: 100%;
+  padding: 1px;
+  vertical-align: bottom;
+}
+.twPc-avatarImg {
+  object-fit: cover;
+  border: 2px solid #fff;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  color: #fff;
+  height: 10rem;
+  width: 10rem;
+}
+.twPc-divUser {
+  margin: 5px 0 0;
+}
+
+.twPc-divStats {
+  margin-left: 30%;
+  padding: 10px 0;
+}
+.twPc-Arrange {
+  box-sizing: border-box;
+  display: table;
+  margin: 0;
+  min-width: 100%;
+  padding: 0;
+  table-layout: auto;
+}
+
+.twPc-StatValue {
+  display: block;
+  font-size: 18px;
+  font-weight: 500;
+  color: #007bff;
+}
+.twPc-StatLabel {
+  color: #8899a6;
+  font-size: 10px;
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-transform: uppercase;
+  transition: color 0.15s ease-in-out 0s;
+}
+.username {
+  font-size: 15px;
+  color: #6c757d;
+}
+.inputFile {
+  border: 2px solid #fff;
+  border-radius: 5rem;
+  box-sizing: border-box;
+  color: #fff;
+  height: 10rem;
+  width: 10rem;
+  position: absolute;
+  background-color: grey;
+  opacity: 0.5;
+  top: 0;
+  font-size: 2rem;
+  text-align: center;
+}
