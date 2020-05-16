@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import MessageCard from "./messageCard";
-import PostMessage from "./postField";
+import MessageCard from "../feedComponents/messageCard";
+import PostMessage from "../feedComponents/postField";
 import axios from "axios";
 import "../css/card.css";
-import { Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 class Feed extends Component {
   state = {
     post: "",
@@ -54,15 +54,13 @@ class Feed extends Component {
     return (
       <div className="container-fluid p-0" style={{ minHeight: "100vh" }}>
         <div className="feed p-2">
-          {this.props.isMyProfile && (
-            <PostMessage
-              post={this.state.post}
-              onPostChange={this.handlePostChange}
-              onFileChange={this.handleFileChange}
-              onSubmit={this.handlePostSubmit}
-              image={this.state.image}
-            />
-          )}
+          <PostMessage
+            post={this.state.post}
+            onPostChange={this.handlePostChange}
+            onFileChange={this.handleFileChange}
+            onSubmit={this.handlePostSubmit}
+            image={this.state.image}
+          />
 
           {this.props.messages !== null &&
             this.props.messages.length > 0 &&
@@ -80,7 +78,6 @@ class Feed extends Component {
                   liked={message.liked === 1}
                   date={message.date}
                   onDeleteMessage={this.props.onDeleteMessage}
-                  isMyMessage={author.login === this.props.realUsername}
                 >
                   <Link className="link" to={"/visitProfile/" + author.login}>
                     {" "}

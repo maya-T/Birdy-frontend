@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+//import Feed from "../feedComponents/feed";
 import Feed from "../feedComponents/feed";
+import Search from "./search";
 import axios from "axios";
 class HomePage extends Component {
   state = {
@@ -24,17 +26,23 @@ class HomePage extends Component {
         console.log(error);
       });
   };
+
   render() {
     return (
       <div className="container-fluid" style={{ minHeight: "100vh" }}>
-        <div className="row justify-content-center">
+        <div className="row justify-content-end">
           <div className="col-6">
             <Feed
-              getMessages={this.getMessages}
               messages={this.state.messages}
+              getMessages={this.getMessages}
               authors={this.state.authors}
-              username={this.state.username}
+              username={this.props.username}
+              realUsername={this.props.username}
+              isMyProfile={true}
             ></Feed>
+          </div>
+          <div className="col-4">
+            <Search realUsername={this.props.username}></Search>
           </div>
         </div>
       </div>

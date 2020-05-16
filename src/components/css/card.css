@@ -108,3 +108,9 @@ hr.dark {
 .input-file:focus + label {
   outline: none;
 }
+.link {
+  color: grey;
+}
+.link:hover {
+  color: #007bff;
+}

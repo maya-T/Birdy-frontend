@@ -14,6 +14,7 @@ class Auth extends Component {
       password: "form-control form-control-md txt2",
     },
   };
+
   handleForm = (value) => {
     this.setState({ willLogin: value });
   };
@@ -33,13 +34,16 @@ class Auth extends Component {
       classesInput["password"] = classesInputName;
       check = false;
     }
-    if (!check) {
+    if (false) {
+      //!check
       this.setState({ classesInput });
     } else {
       axios
         .post("http://localhost:8080/TestWeb/Login", {
           login: this.props.input.login,
           password: this.props.input.password,
+          // login: "@khaled",
+          // password: "khaled",
         })
         .then((res) => {
           const sessionKey = res.data.loginInfo.key;

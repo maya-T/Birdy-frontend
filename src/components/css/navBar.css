@@ -14,6 +14,7 @@
   color: #007bff;
 }
 .dropdown {
+  width: 40px;
   color: #fff;
   border: none;
   font-weight: 450;
@@ -24,6 +25,8 @@
   color: #007bff;
   border: none;
   background-color: transparent;
+  font-weight: 450;
+  font-size: 1.2rem;
   box-shadow: 0;
 }
 .show > .btn-outline-primary.dropdown-toggle {
@@ -40,4 +43,8 @@ a.navbar-brand {
 .brand {
   padding-top: 5px;
   font-size: 1.6rem;
+}
+.badge {
+  position: absolute;
+  bottom: 5px;
 }

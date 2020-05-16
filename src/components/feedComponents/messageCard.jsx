@@ -95,13 +95,31 @@ class MessageCard extends Component {
       <div className="my-3">
         <div className="card w-100" id={this.props._id}>
           <div className="card-body pb-2">
-            <h5 className="card-title">
-              <a href="#">
-                {this.props.firstname + " " + this.props.lastname} {}
-              </a>
-            </h5>
+            <div className="row">
+              <div className="col-11">
+                <h5 className="card-title">
+                  <a href="#">
+                    {this.props.firstname + " " + this.props.lastname} {}
+                  </a>
+                </h5>
+              </div>
+
+              {this.props.isMyMessage && (
+                <div
+                  className="btn btn-link col-1"
+                  onClick={() => {
+                    this.props.onDeleteMessage(this.props._id);
+                  }}
+                >
+                  <FontAwesomeIcon
+                    icon={["far", "trash-alt"]}
+                    className="mx-1"
+                  />
+                </div>
+              )}
+            </div>
             <h6 className="card-subtitle mb-2 text-muted">
-              {this.props.username}
+              {this.props.children}
             </h6>
             <p className="card-text">{this.props.content}</p>
             {this.props.image !== null && this.props.image !== "none" && (

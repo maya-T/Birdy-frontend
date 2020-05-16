@@ -64,44 +64,60 @@ class FriendsCard extends Component {
     return (
       <div>
         <div className="card my-2">
-          <div class="card-header">Followers</div>
+          <div className="card-header">Followers</div>
           <ul
-            class="list-group"
+            className="list-group"
             style={{ maxHeight: "25rem", overflow: "auto" }}
           >
             {this.state.followers !== null &&
               this.state.followers.map((follower) => {
                 return (
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {follower.fname + " " + follower.lname}
-                    <span
-                      class="btn badge badge-primary badge-pill"
-                      onClick={() => this.deleteFollower(follower.login)}
-                    >
-                      <FontAwesomeIcon icon={["fas", "trash-alt"]} />
-                    </span>
+                  <li className="list-group-item  justify-content-between align-items-center">
+                    <div className="row">
+                      <div className="col-10">
+                        {follower.fname + " " + follower.lname}
+                      </div>
+                      <div className="col-2 p-0">
+                        {this.props.isMyProfile && (
+                          <span
+                            className="btn badge badge-primary badge-pill"
+                            onClick={() => this.deleteFollower(follower.login)}
+                          >
+                            <FontAwesomeIcon icon={["fas", "trash-alt"]} />
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </li>
                 );
               })}
           </ul>
         </div>
         <div className="card my-2">
-          <div class="card-header">Following</div>
+          <div className="card-header">Following</div>
           <ul
-            class="list-group"
+            className="list-group"
             style={{ maxHeight: "25rem", overflow: "auto" }}
           >
             {this.state.following !== null &&
               this.state.following.map((followed) => {
                 return (
-                  <li class="list-group-item d-flex justify-content-between align-items-center">
-                    {followed.fname + " " + followed.lname}
-                    <span
-                      class="btn badge badge-primary badge-pill"
-                      onClick={() => this.deleteFollowing(followed.login)}
-                    >
-                      <FontAwesomeIcon icon={["fas", "trash-alt"]} />
-                    </span>
+                  <li className="list-group-item ">
+                    <div className="row">
+                      <div className="col-10">
+                        {followed.fname + " " + followed.lname}
+                      </div>
+                      <div className="col-2 p-0">
+                        {this.props.isMyProfile && (
+                          <span
+                            className="btn badge badge-primary badge-pill"
+                            onClick={() => this.deleteFollowing(followed.login)}
+                          >
+                            <FontAwesomeIcon icon={["fas", "trash-alt"]} />
+                          </span>
+                        )}
+                      </div>
+                    </div>
                   </li>
                 );
               })}
