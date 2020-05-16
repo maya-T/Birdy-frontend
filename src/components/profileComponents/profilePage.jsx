@@ -4,9 +4,10 @@ import SideCard from "./sideCard";
 import Feed from "../feedComponents/feed";
 import FriendsCard from "./friendsCard";
 import axios from "axios";
+import Search from "../homeComponents/search";
 class ProfilePage extends Component {
   state = {
-    messagesNum: 1,
+    messagesNum: 0,
     followersNum: 0,
     followingNum: 0,
     messages: null,
@@ -32,6 +33,19 @@ class ProfilePage extends Component {
         console.log(error);
       });
   };
+  deleteMessage = (_id) => {
+    axios
+      .delete("http://localhost:8080/TestWeb/MyMessages/_id/" + _id)
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(() => {
+        this.getMessages();
+      });
+  };
 
   updateNumbers = (followersNum, followingNum) => {
     this.setState({ followersNum, followingNum });
@@ -39,7 +53,7 @@ class ProfilePage extends Component {
 
   render() {
     return (
-      <div className="row m-4">
+      <div className="row m-2">
         <div className="col-8 p-0">
           <ProfileCard
             username={this.props.username}
@@ -50,6 +64,11 @@ class ProfilePage extends Component {
             followingNum={this.state.followingNum}
             profileImage={this.props.profileImage}
             updateProfileImage={this.props.updateProfileImage}
+            isMyProfile={this.props.isMyProfile}
+            following={this.props.following}
+            actions={this.props.actions}
+            realUsername={this.props.realUsername}
+            setFollowing={this.props.setFollowing}
           ></ProfileCard>
           <div className="row mx-0 my-3" style={{ width: "inherit" }}>
             <div className="col-4 pl-0 ">
@@ -58,10 +77,13 @@ class ProfilePage extends Component {
                 bio={this.props.bio}
                 adress={this.props.adress}
                 website={this.props.website}
+                handleInfoChange={this.props.handleInfoChange}
+                isMyProfile={this.props.isMyProfile}
               ></SideCard>
               <FriendsCard
                 username={this.props.username}
                 updateNumbers={this.updateNumbers}
+                isMyProfile={this.props.isMyProfile}
               ></FriendsCard>
             </div>
             <div className="col-8 border rounded p-0">
@@ -70,9 +92,15 @@ class ProfilePage extends Component {
                 messages={this.state.messages}
                 authors={this.state.authors}
                 username={this.props.username}
+                realUsername={this.props.realUsername}
+                onDeleteMessage={this.deleteMessage}
+                isMyProfile={this.props.isMyProfile}
               ></Feed>
             </div>
           </div>
+        </div>
+        <div className="col-4">
+          <Search realUsername={this.props.realUsername}></Search>
         </div>
       </div>
     );

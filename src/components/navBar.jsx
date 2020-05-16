@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./css/navBar.css";
 import "./fontawesome";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import axios from "axios";
 import {
   Dropdown,
   DropdownToggle,
@@ -11,10 +12,37 @@ import {
 
 class NavBar extends Component {
   state = {
-    dropdownOpen: false,
+    showOptions: false,
+    showNotifications: false,
   };
-  toggle = () => {
-    this.setState({ dropdownOpen: !this.state.dropdownOpen });
+  toggle = (field) => {
+    if (field === "options") {
+      this.setState({ showOptions: !this.state.showOptions });
+    } else {
+      this.setState({ showNotifications: !this.state.showNotifications });
+      if (
+        this.state.showNotifications &&
+        this.props.notifications.unseen.length > 0
+      ) {
+        this.setNotificationsToSeen();
+      }
+    }
+  };
+  setNotificationsToSeen = () => {
+    axios
+      .delete(
+        "http://localhost:8080/TestWeb/Notifications/login/" +
+          this.props.username
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(() => {
+        this.props.setNotificationsToSeen();
+      });
   };
   render() {
     return (
@@ -39,19 +67,56 @@ class NavBar extends Component {
                 return (
                   <li
                     key={this.props.children.indexOf(child)}
-                    className="nav-item"
+                    className="nav-item mr-2"
                   >
                     {child}
                   </li>
                 );
               })}
+              <li className="nav-item mr-4">
+                <Dropdown
+                  isOpen={this.state.showNotifications}
+                  toggle={() => this.toggle("notifications")}
+                >
+                  <DropdownToggle className="dropdown " outline color="primary">
+                    <FontAwesomeIcon icon={["fas", "bell"]} />
+                  </DropdownToggle>
+                  <DropdownMenu right>
+                    {this.props.notifications !== null &&
+                      this.props.notifications !== undefined &&
+                      this.props.notifications.unseen.length > 0 &&
+                      this.props.notifications.unseen.map((notif) => {
+                        return (
+                          <div>
+                            <DropdownItem>{notif}</DropdownItem>
+                            <DropdownItem divider />
+                          </div>
+                        );
+                      })}
+                    {this.props.notifications !== null &&
+                      this.props.notifications !== undefined &&
+                      this.props.notifications.seen.length > 0 &&
+                      this.props.notifications.seen.map((notif) => {
+                        return (
+                          <div>
+                            <DropdownItem>{notif}</DropdownItem>
+                            <DropdownItem divider />
+                          </div>
+                        );
+                      })}
+                  </DropdownMenu>
+                </Dropdown>
+                <span className="badge badge-pill badge-danger">
+                  {this.props.notifications.unseen.length > 0 &&
+                    this.props.notifications.unseen.length}
+                </span>
+              </li>
               <li className="nav-item ">
-                <Dropdown isOpen={this.state.dropdownOpen} toggle={this.toggle}>
-                  <DropdownToggle
-                    className="dropdown mx-4"
-                    outline
-                    color="primary"
-                  >
+                <Dropdown
+                  isOpen={this.state.showOptions}
+                  toggle={() => this.toggle("options")}
+                >
+                  <DropdownToggle className="dropdown" outline color="primary">
                     <FontAwesomeIcon icon={["fas", "angle-down"]} />
                   </DropdownToggle>
                   <DropdownMenu right>

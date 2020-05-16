@@ -55,10 +55,62 @@ class ProfileCard extends Component {
       console.log("null");
     }
   };
+  handleFollow = () => {
+    axios
+      .post("http://localhost:8080/TestWeb/Friends", {
+        follower: this.props.realUsername,
+        followed: this.props.username,
+      })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(() => {
+        this.props.setFollowing(true);
+      });
+    this.props.actions.send(this.props.username);
+  };
+  handleUnfollow = () => {
+    axios
+      .delete(
+        "http://localhost:8080/TestWeb/Friends/follower/" +
+          this.props.realUsername +
+          "/followed/" +
+          this.props.username
+      )
+      .then((res) => {
+        console.log(res);
+      })
+      .catch(function (error) {
+        console.log(error);
+      })
+      .finally(() => {
+        this.props.setFollowing(false);
+      });
+  };
   render() {
     return (
       <div className="twPc-div p-0">
-        <a className="twPc-bg twPc-block"></a>
+        <a className="twPc-bg twPc-block">
+          {!this.props.isMyProfile && !this.props.following && (
+            <button
+              className="follow btn btn-primary"
+              onClick={this.handleFollow}
+            >
+              Follow
+            </button>
+          )}
+          {!this.props.isMyProfile && this.props.following && (
+            <button
+              className="follow btn btn-primary"
+              onClick={this.handleUnfollow}
+            >
+              Unfollow
+            </button>
+          )}
+        </a>
 
         <div>
           <div className="row pl-4">
@@ -69,17 +121,18 @@ class ProfileCard extends Component {
                     className="btn p-0"
                     onMouseEnter={this.handleShow}
                     onMouseLeave={this.handleHide}
+                    style={{ position: "absolute" }}
                   >
-                    {this.props.profileImage !== null && (
+                    {this.props.profileImage !== "none" && (
                       <img
                         src={"data:image/png;base64," + this.props.profileImage}
                         className="twPc-avatarImg"
                       />
                     )}
-                    {this.props.profileImage === null && (
+                    {this.props.profileImage === "none" && (
                       <img src={noImage} className="twPc-avatarImg" />
                     )}
-                    {this.state.show && (
+                    {this.state.show && this.props.isMyProfile && (
                       <div className="inputFile">
                         <FontAwesomeIcon
                           icon={["fas", "edit"]}
@@ -94,6 +147,7 @@ class ProfileCard extends Component {
                   type="file"
                   className="input-file"
                   onChange={this.handleImageChange}
+                  disabled={!this.props.isMyProfile}
                 />
               </div>
             </div>

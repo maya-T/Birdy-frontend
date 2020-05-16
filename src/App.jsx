@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Auth from "./components/authenticationComponents/authentication";
+//import Main from "./components/main";
 import Main from "./components/main";
 import "./App.css";
 class App extends Component {
@@ -19,7 +20,18 @@ class App extends Component {
       birthday: new Date(),
     },
   };
-
+  updateProfileImage = (profileImage) => {
+    this.setState({ profileImage });
+  };
+  handleInfoChange = (value, field) => {
+    if (field === "bio") {
+      this.setState({ bio: value });
+    } else if (field === "adress") {
+      this.setState({ adress: value });
+    } else if (field === "website") {
+      this.setState({ website: value });
+    }
+  };
   handleInputChange = (input) => {
     this.setState({ input });
   };
@@ -48,9 +60,6 @@ class App extends Component {
       this.setState({ online });
     }
   };
-  updateProfileImage = (profileImage) => {
-    this.setState({ profileImage });
-  };
 
   render() {
     return (
@@ -73,6 +82,7 @@ class App extends Component {
             adress={this.state.adress}
             website={this.state.website}
             updateProfileImage={this.updateProfileImage}
+            handleInfoChange={this.handleInfoChange}
           />
         )}
       </React.Fragment>
